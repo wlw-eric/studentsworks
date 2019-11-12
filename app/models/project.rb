@@ -6,6 +6,5 @@ class Project < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :objective, presence: true
-  validates :progress, presence: true, default: 1
   validates :category, presence: true, inclusion: { in: ["Digital", "Marketing", "Design"] }
 end
