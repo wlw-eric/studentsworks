@@ -8,7 +8,9 @@
     <% @projects.each do |project| %>
       <div class="d-flex flex-wrap justify-content-center pt-4" style="width: 18rem;">
           <div class="card m-1">
-            <img src=<%= project.picture %> class="card-img-top" alt="projet">
+
+            <%= cl_image_tag("https://res.cloudinary.com/chaf/image/upload/v1573578917/sample.jpg",
+      width: 400, height: 300, crop: :fill)  %>
           <div class="card-body">
             <h5 class="card-title"><%= project.name %></h5>
             <h6> Catégories : <%= project.category %></h6>
