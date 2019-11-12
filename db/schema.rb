@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_11_11_164927) do
     t.string "name"
     t.text "description"
     t.text "objective"
-    t.integer "progress", default: 1
+    t.integer "progress"
     t.string "picture"
     t.string "category"
     t.bigint "creator_id"
