@@ -15,10 +15,10 @@
   <%= @project.objective %>
 </p>
 
-<p>
+<!-- <p>
   <strong>Progress:</strong>
   <%= @project.progress %>
-</p>
+</p> -->
 
 <p>
   <strong>Picture:</strong>
@@ -36,4 +36,5 @@
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<%= link_to 'Back', projects_path %> |
+<%= link_to 'Participe', new_work_path(@project) %>
