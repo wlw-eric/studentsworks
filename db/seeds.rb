@@ -23,9 +23,8 @@ end
       name: Faker::Lorem.words(number: 3),
       description:    Faker::Lorem.paragraph,
       objective:    Faker::Lorem.sentence,
-      progress:    rand(1..3) , #1-nouveau 2-reserve 3-cloturé
       picture:    "https://image.shutterstock.com/image-vector/rocket-development-rounded-icon-style-260nw-718385470.jpg",
-      category: ["entreprise", "speaker"].sample,
+      category: ["Digital", "Marketing", "Design"].sample,
       creator_id: rand(1..10)
   )
   project.save!
