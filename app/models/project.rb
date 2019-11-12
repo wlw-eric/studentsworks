@@ -7,4 +7,6 @@ class Project < ApplicationRecord
   validates :description, presence: true
   validates :objective, presence: true
   validates :category, presence: true, inclusion: { in: ["Digital", "Marketing", "Design"] }
+
+  mount_uploader :picture, PhotoUploader
 end
