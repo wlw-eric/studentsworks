@@ -16,7 +16,13 @@
           <%= link_to "Projects", projects_path, class: "nav-link" %>
         </li>
         <li class="nav-item">
-          <%= link_to "New Projects", new_project_path, class: "nav-link" %>
+          <%= link_to "New Project", new_project_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Projects", my_project_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "My Profil", user_profil_path(current_user.id), class: "nav-link" %>
         </li>
         <li class="nav-item dropdown">
           <%= image_tag "", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
