@@ -13,6 +13,6 @@ class WorksController < ApplicationController
   private
 
   def set_work
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:project_id])
   end
 end
