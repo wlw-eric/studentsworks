@@ -1,10 +1,18 @@
 class WorksController < ApplicationController
+  before_action :set_work, only: [:create]
+
   def create
-    # @work = Work.new(ID USER, ID PROJET)
-    # if @work.save!
-    #         redirect_to @project
-    #       else
-    #         render :new
-    #       end
+    @work = Work.new(speaker_id: current_user.id, project_id: @project.id)
+    if @work.save!
+      redirect_to project_path(@project)
+    else
+      render :new
+    end
+  end
+
+  private
+
+  def set_work
+    @project = Project.find(params[:id])
   end
 end
