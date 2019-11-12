@@ -4,7 +4,7 @@ class CreateProjects < ActiveRecord::Migration[5.2]
       t.string :name
       t.text :description
       t.text :objective
-      t.integer :progress
+      t.integer :progress, default: 1
       t.string :picture
       t.string :category
       t.references :creator, foreign_key: {to_table: 'users'}

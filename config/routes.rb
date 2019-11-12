@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
   resources :projects
   devise_for :users
-
-  resources :works, only: [:index]
+  
+  resources :works, only: [:index, :create]
 
   devise_scope :user do
     root to: 'devise/sessions#new'
