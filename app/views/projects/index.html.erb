@@ -1,10 +1,12 @@
-
-
 <div class="row justify-content-center">
 
     <% @projects.each do |project| %>
       <div class="d-flex flex-wrap justify-content-center pt-4" style="width: 18rem;">
+        <% if project.progress == 3 %>
+          <div class="card m-1 project-done">
+        <% else %>
           <div class="card m-1">
+        <% end %>
             <a href=' <%= project_path(project) %>'>
               <div class="card-img-top mt-3 text-center">
                 <%= project_imageindex_for(project) %>
@@ -16,6 +18,11 @@
                 <div class="text-center">
                 <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" if project.creator_id == current_user.id %>
                 <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg"  if project.creator_id == current_user.id %>
+                <% if project.work.nil? == false %>
+                <% if current_user == project.work.speaker %>
+                <i class="far fa-check-circle"></i>
+                <% end %>
+                <% end %>
                 </div>
               </div>
           </a>
