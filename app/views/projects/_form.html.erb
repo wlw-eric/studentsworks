@@ -9,7 +9,7 @@
     <%= f.input :objective %>
     <%= f.input :picture %>
     <%= f.input :picture_cache, as: :hidden %>
-    <%= f.input :category %>
+    <%= f.input :category, as: :radio_buttons, collection: ["Digital", "Marketing", "Design"] %>
   </div>
 
   <div class="form-actions">
