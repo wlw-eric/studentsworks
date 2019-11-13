@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   # belongs_to :creator_id
+
   belongs_to :creator, class_name: :User
   has_one :work
 
@@ -9,4 +10,6 @@ class Project < ApplicationRecord
   validates :category, presence: true, inclusion: { in: ["Digital", "Marketing", "Design"] }
 
   mount_uploader :picture, PhotoUploader
+
+
 end

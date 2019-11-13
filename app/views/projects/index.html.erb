@@ -1,4 +1,4 @@
-<tbody>
+
 
 <div class="row justify-content-center">
 
@@ -6,8 +6,7 @@
       <div class="d-flex flex-wrap justify-content-center pt-4" style="width: 18rem;">
           <div class="card m-1">
           <div class="card-img-top mt-3 text-center">
-            <%= cl_image_tag( project.picture , width: 250, height: 200, crop: :fill)  %>
-
+            <%= project_imageindex_for(project) %>
           </div>
           <div class="card-body">
             <h5 class="card-title"><%= project.name %></h5>
