@@ -14,9 +14,9 @@
             <h6> Catégories : <%= project.category %></h6>
             <p class="card-text"><%= project.description[0..500] %></p>
             <div class="text-center">
-            <%= link_to '', project , class: "fa fa-search btn btn-sm btn-outline-secondary btn-circle btn-lg"%>
-            <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
-            <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
+            <%= link_to '', project, class: "fa fa-search btn btn-sm btn-outline-secondary btn-circle btn-lg"%>
+            <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" if project.creator_id == current_user.id %>
+            <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg"  if project.creator_id == current_user.id %>
             </div>
           </div>
         </div>
