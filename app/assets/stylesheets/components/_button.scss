@@ -1,0 +1,10 @@
+#submit-button {
+	color: $soft-gray;
+	border: 1px solid $soft-gray;
+	border-radius: 3px;
+}
+
+#submit-button:hover {
+    background-color: $soft-gray;
+    color: white;
+}
