@@ -2,7 +2,7 @@
 <br>
 <div class="text-center">
   <%= link_to ' Edit', edit_project_path(@project), class: "far fa-edit btn btn-outline-secondary btn-circle btn-lg" %>
-  <%= link_to ' Participe', edit_project_path(@project), class: "  far fa-plus-square btn btn-outline-secondary btn-circle btn-lg" %>
+  <%= link_to ' Participe', project_works_path(@project), method: :create, class: "  far fa-plus-square btn btn-outline-secondary btn-circle btn-lg" if @project.progress <= 1%>
  </div>
 <p id="notice"><%= notice %></p>
 
