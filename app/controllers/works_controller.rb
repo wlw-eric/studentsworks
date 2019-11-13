@@ -3,6 +3,8 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(speaker_id: current_user.id, project_id: @project.id)
+    @project.progress = 2
+    @project.save
     if @work.save!
       redirect_to project_path(@project)
     else

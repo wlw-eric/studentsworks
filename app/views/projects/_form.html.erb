@@ -7,13 +7,12 @@
     <%= f.input :name %>
     <%= f.input :description %>
     <%= f.input :objective %>
-    <%= f.input :progress %>
     <%= f.input :picture %>
     <%= f.input :picture_cache, as: :hidden %>
-    <%= f.input :category %>
+    <%= f.input :category, as: :radio_buttons, collection: ["Digital", "Marketing", "Design"] %>
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit %>
+    <%= f.button :submit, id: "submit-button" %>
   </div>
 <% end %>

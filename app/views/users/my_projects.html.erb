@@ -8,16 +8,26 @@
 <br>
 <%= x.objective %>
 <br>
+<%= x.id %>
 
-<% if x.progress = 1 %>
-<%= "Disponible" %>
-<% elsif x.progress = 2 %>
-<%= "En cours" %>
-<% elsif x.progress = 3 %>
+<% if x.progress == 3 %>
 <%= "Terminé" %>
 <% end %>
+
+<% if x.progress == 2 %>
+<%= "En cours" %>
+<% end %>
+
+<% if x.progress == 1 %>
+<%= "Disponible" %>
+<% end %>
+
+<%= link_to 'Terminer', update_progress_path(x.id), method: :update_progress if x.progress < 3 && x.progress > 1 %>
+
 <br>
-<img src=<%= x.picture %> class="card-img-top" alt="projet">
+
+<img src=<%= x.picture %>>
+
 <br>
 <%= x.category %>
 <% end %>
