@@ -22,6 +22,8 @@
 <%= "Disponible" %>
 <% end %>
 
+<%= link_to 'Terminer', update_progress_path(x.id), method: :update_progress if x.progress < 3%>
+
 <br>
 
 <img src=<%= x.picture %>>

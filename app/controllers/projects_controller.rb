@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: [:show, :edit, :update, :destroy]
+  before_action :set_project, only: [:show, :edit, :update, :destroy, :update_progress]
 
   # GET /projects
   # GET /projects.json
@@ -50,6 +50,12 @@ class ProjectsController < ApplicationController
         format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def update_progress
+    @project.progress = 3
+    @project.save
+    redirect_to my_project_path
   end
 
   # DELETE /projects/1
