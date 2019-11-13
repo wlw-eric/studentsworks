@@ -1,4 +1,7 @@
-<h3>Mes projets selectionnés en cours</h3>
+
+<button class="accordion">Mes projets selectionnés en cours (<%= @my_projects.count%>)</button>
+<div class="panel">
+
 <br>
 <% @my_projects.each do |x| %>
   <% if x.progress == 2 %>
@@ -15,12 +18,13 @@
     </div>
     </div>
     <br>
-
-
   <% end %>
 <% end %>
+</div>
 <br>
-  <h3>Mes projets selectionnés terminés</h3>
+
+<button class="accordion">Mes projets selectionnés terminés</button>
+<div class="panel">
 <% @my_projects.each do |x| %>
   <% if x.progress == 3 %>
     <div class="card-product">
@@ -39,8 +43,10 @@
 
   <% end %>
 <% end %>
+</div>
 
-<h3>Mes projets proposés</h3>
+<button class="accordion">Mes projets proposés (<%= @my_projects.count%>)</button>
+<div class="panel">
 <% @my_projects.each do |x| %>
     <div class="card-product">
       <%= project_imageindex_for(x) %>
@@ -59,8 +65,8 @@
             <%= link_to '', x, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
             </div>
           <% end %>
-
       </div>
     </div>
     <br>
   <% end %>
+  </div>
