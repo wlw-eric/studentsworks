@@ -1,33 +1,68 @@
-<h1>Mes projets</h1>
-
-
+<h3>Mes projets selectionnés en cours</h3>
+<br>
 <% @my_projects.each do |x| %>
-<%= x.name %>
-<br>
-<%= x.description %>
-<br>
-<%= x.objective %>
-<br>
-<%= x.id %>
+  <% if x.progress == 2 && x.work.speaker.id == current_user.id %>
+   <div class="card-product">
+      <%= project_imageindex_for(x) %>
+    <div class="card-product-infos">
+      <h2><%= x.name %></h2>
+      <p><strong>Objectif :</strong> <%= x.objective[0..100] %></p>
+      <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
+      <div class="cart-trip-info">
+        <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
+        <%= link_to ' Terminer et envoyer', update_progress_path(x.id), method: :update_progress, class: "fa fa-paper-plane btn-sm btn btn-outline-secondary btn-circle btn-lg" if x.progress < 3 && x.progress > 1 %>
+      </div>
+    </div>
+    </div>
+    <br>
 
-<% if x.progress == 3 %>
-<%= "Terminé" %>
+
+  <% end %>
+<% end %>
+<br>
+  <h3>Mes projets selectionnés terminés</h3>
+<% @my_projects.each do |x| %>
+  <% if x.progress == 3 && x.work.speaker.id == current_user.id %>
+    <div class="card-product">
+      <%= project_imageindex_for(x) %>
+    <div class="card-product-infos">
+      <h2><%= x.name %></h2>
+      <p><strong>Objectif :</strong>  <%= x.objective[0..100] %></p>
+      <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
+      <div class="cart-trip-info">
+        <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
+        <p class="text-muted"><%= time_ago_in_words(x.updated_at) %></p>
+      </div>
+    </div>
+    </div>
+    <br>
+
+  <% end %>
 <% end %>
 
-<% if x.progress == 2 %>
-<%= "En cours" %>
-<% end %>
+<h3>Mes projets proposés</h3>
+<% @my_projects.each do |x| %>
+  <% if x.creator_id == current_user.id %>
+    <div class="card-product">
+      <%= project_imageindex_for(x) %>
+      <div class="card-product-infos">
+        <h2><%= x.name %></h2>
+        <p><strong>Objectif :</strong>  <%= x.objective[0..100] %></p>
+        <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
 
-<% if x.progress == 1 %>
-<%= "Disponible" %>
-<% end %>
+          <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
+          <% if x.work.present? %>
+            <p>projet reservé par : <%= x.work.speaker.email %></p>
+          <% else %>
+            <p>projet non reservé </p>
+            <div class="link">
+            <%= link_to '', edit_project_path(x), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg"%>
+            <%= link_to '', x, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
+            </div>
+          <% end %>
 
-<%= link_to 'Terminer', update_progress_path(x.id), method: :update_progress if x.progress < 3 && x.progress > 1 %>
-
-<br>
-
-<img src=<%= x.picture %>>
-
-<br>
-<%= x.category %>
+      </div>
+    </div>
+    <br>
+  <% end %>
 <% end %>
