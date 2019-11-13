@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :set_work, only: [:create]
+  before_action :set_work, only: [:create, :destroy]
 
   def create
     @work = Work.new(speaker_id: current_user.id, project_id: @project.id)
@@ -10,6 +10,14 @@ class WorksController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @work = Work.where("project_id = #{params[:project_id]} AND works.speaker_id = #{params[:id]}")
+    @work.first.destroy
+    @project.progress = 1
+    @project.save
+    redirect_to project_path(@project)
   end
 
   private
