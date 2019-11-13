@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   resources :projects do
-    resources :works, only: [:index, :create]
+    resources :works, only: [:index, :create, :destroy]
   end
 
   get 'users/my_projects', to: 'users#my_projects', as: 'my_project'
