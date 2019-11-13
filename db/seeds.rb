@@ -41,3 +41,29 @@ end
   )
   project.save!
 end
+
+n = 0
+3.times do
+  project = Project.all[n]
+  work = Work.new(
+    project: project,
+    speaker: User.where.not(id: project.creator_id).sample
+    )
+  project.progress = 3
+  project.save
+  work.save
+  n += 2
+end
+
+i = 1
+2.times do
+  project = Project.all[i]
+  work = Work.new(
+    project: project,
+    speaker: User.where.not(id: project.creator_id).sample
+    )
+  project.progress = 2
+  project.save
+  work.save
+  i += 2 
+end
