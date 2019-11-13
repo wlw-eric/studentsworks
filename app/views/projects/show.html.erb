@@ -30,6 +30,24 @@
       <strong>Description:</strong>
       <%= @project.description %>
     </p>
+    <br>
+    <p>
+    <strong>Contact:</strong>
+    <%= @project.creator.first_name %> <%= @project.creator.last_name %> <em> <%= @project.creator.entreprise_name %></em>
+         <%= mail_to @project.creator.email, @project.creator.email, subject: "À propos de votre projet #{@project.name}", body: "Bonjour, je voudrais plus d'informations à propos de votre projet : #{@project.name} \n\n Se rendre sur la page du projet : #{request.original_url}" %>
+   </p>
+<!-- TEMP SPEAKER ID -->
+   <br>
+   <p>
+      <% if @project.work.present? %>
+      <strong>Contributor:</strong>
+       <%= @project.work.speaker.first_name %> <%= @project.work.speaker.last_name %>
+      <% else %>
+        <%= "Projet non reservé" %>
+ -->      <% end %>
+      </p>
+
+
 <!-- <p>
   <strong>Progress:</strong>
   <%= @project.progress %>
