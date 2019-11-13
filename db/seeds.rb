@@ -5,8 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-p "test"
-users = User.new(
+Project.destroy_all
+User.destroy_all
+
+user = User.new(
       email:    "toto@gmail.com",
       password:    "123456",
       first_name:    Faker::Name.first_name ,
@@ -14,6 +16,7 @@ users = User.new(
       entreprise_name: Faker::Company.name,
       role:  rand(1..2) #1-entreprise 2-intervenant
   )
+user.save
 
 10.times do
   users = User.new(
@@ -33,7 +36,7 @@ end
       description:    Faker::Lorem.paragraph,
       objective:    Faker::Lorem.sentence,
       category: ["Digital", "Marketing", "Design"].sample,
-      creator_id: rand(1..10)
+      creator: User.all.sample
   )
   project.save!
 end
