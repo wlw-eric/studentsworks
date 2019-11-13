@@ -41,9 +41,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1
   # PATCH/PUT /projects/1.json
   def update
-
-      @project.update(project_params)
-
+    @project.update(project_params)
   end
 
   def update_progress

@@ -31,5 +31,9 @@
       <strong>Description:</strong>
       <%= @project.description %>
     </p>
+    <p>
+      <strong>Contact:</strong>
+      <%= "#{@project.creator.first_name} #{@project.creator.last_name} #{@project.creator.email}" %>
+    </p>
 <% logo = `<span class="far fa-edit"></span>` %>
 
