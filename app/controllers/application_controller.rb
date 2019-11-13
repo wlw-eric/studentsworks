@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
+  before_action :authenticate_user!, :configure_permitted_parameters, if: :devise_controller?
 
   layout :layout_by_resource
 
@@ -11,5 +11,11 @@ class ApplicationController < ActionController::Base
     else
       "application"
     end
+  end
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:account_update, keys: [:first_name, :last_name, :entreprise_name, :password])
   end
 end
