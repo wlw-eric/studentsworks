@@ -32,7 +32,7 @@ end
       name: Faker::Company.bs,
       description:    Faker::Lorem.paragraph,
       objective:    Faker::Lorem.sentence,
-      picture:    "https://image.shutterstock.com/image-vector/rocket-development-rounded-icon-style-260nw-718385470.jpg",
+      picture:    "https://res.cloudinary.com/chaf/image/upload/v1573578917/sample.jpg",
       category: ["Digital", "Marketing", "Design"].sample,
       creator_id: rand(1..10)
   )

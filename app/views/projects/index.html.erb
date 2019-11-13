@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+<p class="alert alert-primary" id="notice"><%= notice %></p>
+<br>
 
 
   <tbody>
@@ -8,16 +9,19 @@
     <% @projects.each do |project| %>
       <div class="d-flex flex-wrap justify-content-center pt-4" style="width: 18rem;">
           <div class="card m-1">
+          <div class="card-img-top mt-3 text-center">
+            <%= cl_image_tag( project.picture , width: 250, height: 200, crop: :fill)  %>
 
-            <%= cl_image_tag("https://res.cloudinary.com/chaf/image/upload/v1573578917/sample.jpg",
-      width: 400, height: 300, crop: :fill)  %>
+          </div>
           <div class="card-body">
             <h5 class="card-title"><%= project.name %></h5>
             <h6> Catégories : <%= project.category %></h6>
             <p class="card-text"><%= project.description[0..500] %></p>
-            <%= link_to 'Show', project %>
-            <%= link_to 'Edit', edit_project_path(project) %>
-            <%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <div class="text-center">
+            <%= link_to '', project , class: "fa fa-search btn btn-sm btn-outline-secondary btn-circle btn-lg"%>
+            <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
+            <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
+            </div>
           </div>
         </div>
       </div>
@@ -27,4 +31,3 @@
 
 <br>
 
-<%= link_to 'New Project', new_project_path %>
