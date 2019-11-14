@@ -1,1 +1,64 @@
 // Specific CSS for your home-page
+.home {
+    background: url(fond_accueil.jpg) no-repeat center center;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    height: 400px;
+}
+
+.heading {
+    font-family: 'Proxima Bold';
+    color: white;
+    font-size: 40px;
+    margin: 10px 0;
+}
+
+.intro-book img {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  transition: all 0.3s ease;
+  max-width: 450px;
+}
+.subheading {
+    color: white;
+    opacity: .5;
+    font-size: 24px;
+    margin: 10px 0px 30px;
+    font-family: 'Proxima';
+    line-height: 38px;
+  }
+
+ .home  p {
+    margin: 20px 0;
+    font-size: 20px;
+    color: white;
+    line-height: 34px;
+ }
+
+ .btn-white {
+    border: 3px solid white;
+    background: transparent;
+    color: white;
+}
+.btn-white:hover {
+    background: white;
+    color: #7cc576;
+}
+.btn-green {
+    background: #7cc576;
+    border: 3px solid #7cc576;
+    color: white;
+  }
+.btn-green:hover {
+    background: #30ad3d;
+    border-color: #30ad3d;
+    color: white;
+}
+.intro-book img {
+    margin: 0 auto;
+    width:100%;
+    max-width: 350px;
+}
+

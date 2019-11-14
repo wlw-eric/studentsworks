@@ -1,2 +1,26 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>StudentsWorks</title>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
+  </head>
+  <body>
+  <div class="home d-flex align-content-center justify-content-center flex-wrap" style="height: 714px;">
+      <div class="intro-book p-3" style="top: 64px;">
+        <%= image_tag "logo_accueil.jpg" %>
+      </div>
+      <div class="p-3">
+        <h2 class="heading">Students Works</h2>
+        <h4 class="subheading">Blabla blaaaaa.</h4>
+        <p>And super blabla de pute a click.</p>
+        <a href="#home" class="scrollto btn btn-white">About Students Works</a>
+        <a href="projects#index" class="btn btn-green">Connect</a>
+      </div>
+  </div>
+  </body>
+</html>
