@@ -28,7 +28,7 @@ user.save
       entreprise_name: Faker::Company.name,
       role:  rand(1..2) #1-entreprise 2-intervenant
   )
-  users.save!
+  users.save
 end
 
 10.times do
@@ -39,7 +39,7 @@ end
       category: ["Digital", "Marketing", "Design"].sample,
       creator: User.all.sample
   )
-  project.save!
+  project.save
 end
 
 n = 0

@@ -37,12 +37,10 @@ class ProjectsController < ApplicationController
     @project.creator = current_user
 
     respond_to do |format|
-      if @project.save!
+      if @project.save
         format.html { redirect_to @project, notice: 'Project was successfully created.' }
-        format.json { render :show, status: :created, location: @project }
       else
         format.html { render :new }
-        format.json { render json: @project.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,6 +49,7 @@ class ProjectsController < ApplicationController
   # PATCH/PUT /projects/1.json
   def update
     @project.update(project_params)
+    redirect_to @project
   end
 
   def update_progress
