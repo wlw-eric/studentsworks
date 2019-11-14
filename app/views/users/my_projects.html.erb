@@ -1,19 +1,21 @@
 
-<button class="accordion">Mes projets selectionnés en cours (<%= @my_projects.count%>)</button>
+<!-- Projets sélectionnés en cours
+ -->
+<button class="accordion">Mes projets selectionnés en cours (<%= @my_projects.group(:progress).having("projects.progress = 2").count(:progress).length %>)</button>
 <div class="panel">
 
 <br>
 <% @my_projects.each do |x| %>
-  <% if x.progress == 2 %>
+  <% if x.progress == 2  %>
    <div class="card-product">
-      <%= project_imageindex_for(x) %>
+        <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
-      <h2><%= x.name %></h2>
+      <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
       <p><strong>Objectif :</strong> <%= x.objective[0..100] %></p>
       <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
       <div class="cart-trip-info">
         <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
-        <%= link_to ' Terminer et envoyer', update_progress_path(x.id), method: :update_progress, class: "fa fa-paper-plane btn-sm btn btn-outline-secondary btn-circle btn-lg" if x.progress < 3 && x.progress > 1 %>
+        <%= link_to ' Terminer et envoyer', update_progress_path(x.id), method: :update_progress, class: "fa fa-paper-plane btn-sm btn btn-outline-secondary btn-circle btn-lg" if x.progress < 3 && x.progress > 1 && x.work.speaker_id == current_user.id %>
       </div>
     </div>
     </div>
@@ -23,14 +25,16 @@
 </div>
 <br>
 
-<button class="accordion">Mes projets selectionnés terminés</button>
+<!-- Projets terminés
+ -->
+<button class="accordion">Mes projets selectionnés terminés (<%= @my_projects.group(:progress).having("projects.progress = 3").count(:progress).length %>) </button>
 <div class="panel">
 <% @my_projects.each do |x| %>
   <% if x.progress == 3 %>
     <div class="card-product">
-      <%= project_imageindex_for(x) %>
+        <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
-      <h2><%= x.name %></h2>
+      <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
       <p><strong>Objectif :</strong>  <%= x.objective[0..100] %></p>
       <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
       <div class="cart-trip-info">
@@ -45,15 +49,18 @@
 <% end %>
 </div>
 
-<button class="accordion">Mes projets proposés (<%= @my_projects.count%>)</button>
+<!-- Mes projets proposés
+ -->
+<button class="accordion">Mes projets proposés (<%= @my_projects.group(:creator_id).having("projects.creator_id = #{current_user.id}").count(:creator_id).length %>)</button>
 <div class="panel">
 <% @my_projects.each do |x| %>
+  <% if x.creator_id == current_user.id %>
     <div class="card-product">
-      <%= project_imageindex_for(x) %>
-      <div class="card-product-infos">
-        <h2><%= x.name %></h2>
-        <p><strong>Objectif :</strong>  <%= x.objective[0..100] %></p>
-        <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
+        <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
+    <div class="card-product-infos">
+      <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
+      <p><strong>Objectif :</strong>  <%= x.objective[0..100] %></p>
+      <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
 
           <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
           <% if x.work.present? %>
@@ -61,12 +68,13 @@
           <% else %>
             <p>projet non reservé </p>
             <div class="link">
-            <%= link_to '', edit_project_path(x), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg"%>
-            <%= link_to '', x, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
+              <%= link_to '', edit_project_path(x), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg"%>
+              <%= link_to '', x, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
             </div>
           <% end %>
+        </div>
       </div>
-    </div>
-    <br>
+      <br>
+    <% end %>
   <% end %>
   </div>
