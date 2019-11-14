@@ -34,7 +34,7 @@ end
 10.times do
   project = Project.new(
       name: Faker::Company.bs,
-      description:    Faker::Lorem.paragraphs(number: 10),
+      description:    (Faker::Lorem.paragraphs(number: 10)).join,
       objective:    Faker::Lorem.sentence,
       category: ["Digital", "Marketing", "Design"].sample,
       creator: User.all.sample
