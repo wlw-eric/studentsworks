@@ -1,3 +1,4 @@
+<%= render 'formsearch', project: @project %>
 <div class="row justify-content-center">
 
     <% @projects.each do |project| %>
@@ -22,7 +23,7 @@
               <div class="card-body">
                 <h5 class="card-title"><%= project.name %></h5>
                 <h6> Categories : <%= project.category %></h6>
-                <p class="card-text"><%= project.description[0..500] %></p>
+                <p class="card-text"><%= project.description[0..100] %></p>
                 <h6> Company : <%= project.creator.entreprise_name %></h6>
                 <div class="text-center">
                 <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" if project.creator_id == current_user.id %>

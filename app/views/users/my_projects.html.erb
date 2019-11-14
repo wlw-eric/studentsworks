@@ -1,11 +1,11 @@
 
 <!-- Projets sélectionnés en cours
  -->
-<button class="accordion">Mes projets selectionnés en cours (<%= @my_projects.group(:progress).having("projects.progress = 2").count(:progress).length %>)</button>
+<button class="accordion">Mes projets selectionnés en cours (<%= @selected_projects.count %>)</button>
 <div class="panel">
 
 <br>
-<% @my_projects.each do |x| %>
+<% @selected_projects.each do |x| %>
   <% if x.progress == 2  %>
    <div class="card-product">
         <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
@@ -27,10 +27,9 @@
 
 <!-- Projets terminés
  -->
-<button class="accordion">Mes projets selectionnés terminés (<%= @my_projects.group(:progress).having("projects.progress = 3").count(:progress).length %>) </button>
+<button class="accordion">Mes projets selectionnés terminés (<%= @closed_projects.count %>) </button>
 <div class="panel">
-<% @my_projects.each do |x| %>
-  <% if x.progress == 3 %>
+<% @closed_projects.each do |x| %>
     <div class="card-product">
         <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
@@ -44,16 +43,14 @@
     </div>
     </div>
     <br>
-
-  <% end %>
 <% end %>
 </div>
 
 <!-- Mes projets proposés
  -->
-<button class="accordion">Mes projets proposés (<%= @my_projects.group(:creator_id).having("projects.creator_id = #{current_user.id}").count(:creator_id).length %>)</button>
+<button class="accordion">Mes projets proposés (<%= @propal_projects.count %>)</button>
 <div class="panel">
-<% @my_projects.each do |x| %>
+<% @propal_projects.each do |x| %>
   <% if x.creator_id == current_user.id %>
     <div class="card-product">
         <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>

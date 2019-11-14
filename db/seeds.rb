@@ -28,18 +28,18 @@ user.save
       entreprise_name: Faker::Company.name,
       role:  rand(1..2) #1-entreprise 2-intervenant
   )
-  users.save!
+  users.save
 end
 
 10.times do
   project = Project.new(
       name: Faker::Company.bs,
-      description:    Faker::Lorem.paragraph,
+      description:    Faker::Lorem.paragraphs(number: 10),
       objective:    Faker::Lorem.sentence,
       category: ["Digital", "Marketing", "Design"].sample,
       creator: User.all.sample
   )
-  project.save!
+  project.save
 end
 
 n = 0

@@ -1,0 +1,35 @@
+  <div id="sticky-header">
+    <%= form_tag projects_path, method: :get, class: "simple_form search", id:"search-index" do %>
+      <div class="search-form-control form-group search_index">
+      <%= text_field_tag :name,
+        params[:name],
+        class: "form-control string required field",
+        placeholder: "Titre"
+      %>
+
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="input-group-text">
+      <input class="ml-3" value="Digital" type="checkbox" name="categorysdigital" id="digital" aria-label="Checkbox for following text input">Digital
+      <input class="ml-3" value="Marketing" type="checkbox" name="categorysmarketing" id="marketing" aria-label="Checkbox for following text input">Marketing
+      <input class="ml-3" value="Design" type="checkbox" name="categorysdesign" id="design" aria-label="Checkbox for following text input">Design
+    </div>
+  </div>
+</div>
+
+
+
+
+      <%#= select_tag :category,
+       options_for_select(["", "Digital", "Marketing", "Design"],
+        params[:category]),
+        as: :radio_buttons,
+        class: "form-control string required field"
+         %>
+      <%= button_tag icon('fas', 'search', ' Search'), class: "btn btn-flat", id: "submit-search" %>
+      </div>
+    <% end %>
+  </div>
+
+
+
