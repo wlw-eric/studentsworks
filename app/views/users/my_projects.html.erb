@@ -1,4 +1,6 @@
 
+<!-- Projets sélectionnés en cours
+ -->
 <button class="accordion">Mes projets selectionnés en cours (<%= @selected_projects.count %>)</button>
 <div class="panel">
 
@@ -23,6 +25,8 @@
 </div>
 <br>
 
+<!-- Projets terminés
+ -->
 <button class="accordion">Mes projets selectionnés terminés (<%= @closed_projects.count %>) </button>
 <div class="panel">
 <% @closed_projects.each do |x| %>
@@ -42,7 +46,8 @@
 <% end %>
 </div>
 
-
+<!-- Mes projets proposés
+ -->
 <button class="accordion">Mes projets proposés (<%= @propal_projects.count %>)</button>
 <div class="panel">
 <% @propal_projects.each do |x| %>
