@@ -4,7 +4,16 @@ class ProjectsController < ApplicationController
   # GET /projects
   # GET /projects.json
   def index
-    @projects = Project.all
+
+    # @sql = "Projects.name ILIKE '#{'%'+params[:name]+'%'}' " if params[:name].present?
+    @sql = params[:name].present? ? "Projects.name ILIKE '#{'%'+params[:name]+'%'}' " : "Projects.name ILIKE '%' "
+    @sql += "and Projects.category ILIKE '#{'%'+params[:category]+'%'}' " if params[:category].present?
+    @sql += "OR Projects.description ILIKE '#{'%'+params[:category]+'%'}' " if params[:category].present?
+    # @sql += "GROUP BY category"
+    @projects = Project.where(@sql)
+    @count = @projects.count
+    @count_tt = Project.all.count
+
   end
 
   # GET /projects/1

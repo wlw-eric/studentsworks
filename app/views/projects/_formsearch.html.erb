@@ -1,0 +1,21 @@
+  <div id="sticky-header">
+    <%= form_tag projects_path, method: :get, class: "simple_form search", id:"search-index" do %>
+      <div class="search-form-control form-group search_index">
+      <%= text_field_tag :name,
+        params[:name],
+        class: "form-control string required field",
+        placeholder: "Titre"
+      %>
+      <%= text_field_tag :category,
+        params[:category],
+        class: "form-control string required field",
+        placeholder: "Category"
+      %>
+
+      <%= button_tag icon('fas', 'search', ' Search'), class: "btn btn-flat", id: "submit-search" %>
+      </div>
+    <% end %>
+  </div>
+
+
+
