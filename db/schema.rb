@@ -19,9 +19,9 @@ ActiveRecord::Schema.define(version: 2019_11_11_164927) do
     t.string "name"
     t.text "description"
     t.text "objective"
-    t.integer "progress", default: 1 #1=propose 2=selected 3=close
+    t.integer "progress", default: 1
     t.string "picture"
-    t.string "category" #["Digital", "Marketing", "Design"]
+    t.string "category"
     t.bigint "creator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
