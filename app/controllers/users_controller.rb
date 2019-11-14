@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_my_projects, :propal_projects, :closed_projects, :selected_projects
+  before_action :set_my_projects, :propal_projects, :closed_projects, :selected_projects, only: [:my_projects]
+
+  def my_projects
+  end
 
   private
 
