@@ -26,8 +26,8 @@
                 <p class="card-text"><%= project.description[0..100] %></p>
                 <h6> Company : <%= project.creator.entreprise_name %></h6>
                 <div class="text-center">
-                <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" if project.creator_id == current_user.id %>
-                <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg"  if project.creator_id == current_user.id %>
+                <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" if project.creator_id == current_user.id && project.progress < 3 %>
+                <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg"  if project.creator_id == current_user.id && project.progress < 3 %>
                 <% if project.work.nil? == false %>
                 <% if current_user == project.work.speaker %>
                 <i class="far fa-check-circle"></i>
@@ -39,6 +39,5 @@
         </div>
       </div>
     <% end %>
-
+  </div>
 </div>
-<br>
