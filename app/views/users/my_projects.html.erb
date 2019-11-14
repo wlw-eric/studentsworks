@@ -28,7 +28,7 @@
 <% @my_projects.each do |x| %>
   <% if x.progress == 3 %>
     <div class="card-product">
-      <%= project_imageindex_for(x) %>
+        <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
       <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
       <p><strong>Objectif :</strong>  <%= x.objective[0..100] %></p>
@@ -51,9 +51,9 @@
 <% @my_projects.each do |x| %>
   <% if x.creator_id == current_user.id %>
     <div class="card-product">
-        <%= project_imageindex_for(x) %>
+        <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
-      <h2><%= x.name %></h2>
+      <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
       <p><strong>Objectif :</strong>  <%= x.objective[0..100] %></p>
       <p><strong>Descriptif :</strong> <%= x.description[0..400] %></p>
 
