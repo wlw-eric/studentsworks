@@ -1,45 +1,45 @@
-<%= render 'formsearch', project: @project %>
+  <%= render 'formsearch', project: @project %>
 
-<p>Nomber in list <%= @count %>/<%= @count_tt %></p>
-<div class="row justify-content-center">
+  <p>Nomber in list <%= @count %>/<%= @count_tt %></p>
+  <div class="row justify-content-center">
 
-    <% @projects.each do |project| %>
-      <div class="d-flex flex-wrap justify-content-center pt-4" style="width: 18rem;">
+      <% @projects.each do |project| %>
+        <div class="d-flex flex-wrap justify-content-center pt-4" style="width: 18rem;">
 
 
 
-        <% if project.progress == 3 %>
-          <div class="card m-1 project-done">
-        <% else %>
-          <div class="card m-1">
-        <% end %>
-            <a href=' <%= project_path(project) %>'>
-              <div class="card-img-top mt-3 text-center">
-                <% if project.progress == 2 && (current_user != project.work.speaker)  %>
-          <div class="text-left margin-10" >
-          <i class="far fa-heart"> Booked</i>
-        </div>
+          <% if project.progress == 3 %>
+            <div class="card m-1 project-done">
+          <% else %>
+            <div class="card m-1">
           <% end %>
-                <%= project_imageindex_for(project) %>
-              </div>
-              <div class="card-body">
-                <h5 class="card-title"><%= project.name %></h5>
-                <h6> Categories : <%= project.category %></h6>
-                <p class="card-text"><%= project.description[0..100] %></p>
-                <h6> Company : <%= project.creator.entreprise_name %></h6>
-                <div class="text-center">
-                <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" if project.creator_id == current_user.id && project.progress < 3 %>
-                <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg"  if project.creator_id == current_user.id && project.progress < 3 %>
-                <% if project.work.nil? == false %>
-                <% if current_user == project.work.speaker %>
-                <i class="far fa-check-circle"></i>
-                <% end %>
-                <% end %>
+              <a href=' <%= project_path(project) %>'>
+                <div class="card-img-top mt-3 text-center">
+                  <% if project.progress == 2 && (current_user != project.work.speaker)  %>
+            <div class="text-left margin-10" >
+            <i class="far fa-heart"> Booked</i>
+          </div>
+            <% end %>
+                  <%= project_imageindex_for(project) %>
                 </div>
-              </div>
-          </a>
+                <div class="card-body">
+                  <h5 class="card-title"><%= project.name %></h5>
+                  <h6> Categories : <%= project.category %></h6>
+                  <p class="card-text"><%= project.description[0..100] %></p>
+                  <h6> Company : <%= project.creator.entreprise_name %></h6>
+                  <div class="text-center">
+                  <%= link_to '', edit_project_path(project), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg" if project.creator_id == current_user.id && project.progress < 3 %>
+                  <%= link_to '', project, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg"  if project.creator_id == current_user.id && project.progress < 3 %>
+                  <% if project.work.nil? == false %>
+                  <% if current_user == project.work.speaker %>
+                  <i class="far fa-check-circle"></i>
+                  <% end %>
+                  <% end %>
+                  </div>
+                </div>
+            </a>
+          </div>
         </div>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
-</div>

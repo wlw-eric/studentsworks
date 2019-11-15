@@ -1,8 +1,9 @@
-<%= link_to '< Back', projects_path, { class: 'back-link' } %>
 
-<div class="form-container">
-  <h1 id="new-project">New Project</h1>
+  <%= link_to '< Back', projects_path, { class: 'back-link' } %>
 
-  <%= render 'form', project: @project %>
+  <div class="form-container">
+    <h1 id="new-project">New Project</h1>
 
-</div>
+    <%= render 'form', project: @project %>
+
+  </div>
