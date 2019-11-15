@@ -1,0 +1,42 @@
+.uk-card-default {
+	display: flex;
+	margin: 16px 0;
+	box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+	width: 800px!important;
+	height: 200px;
+	position: relative;
+	border-radius: 2px;
+}
+
+.uk-card-default done {
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.uk-card-body {
+	padding-left: 16px;
+	padding-top: 8px;
+}
+
+.index-card-container {
+	display: grid;
+	max-width: 90%;
+	margin: 0 auto;
+	justify-content: center;
+}
+
+.modif-buttons {
+	position: absolute;
+	bottom: 8px;
+}
+
+.booked-icon {
+	position: absolute;
+    top: 12px;
+    right: 16px;
+}
+
+.current-user-book {
+	position: absolute;
+    bottom: 170px;
+    left: 510px;
+}
