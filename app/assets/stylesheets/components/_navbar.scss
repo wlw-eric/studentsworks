@@ -22,7 +22,14 @@
   margin-left: 8px;
  }
 
- body > div.navbar.navbar-expand-sm.navbar-light.navbar-lewagon > a > img:nth-child(1) {
+body > div.navbar.navbar-expand-sm.navbar-light.navbar-lewagon > a > img:nth-child(1) {
   width: 80px;
   border-radius: 25px;
+}
+
+.navbar .trouducul {
+  display: flex;
+  height: 2.5em; /* hauteur du parent */
+  line-height: 2.5em; /* hauteur de ligne (identique) */
+  white-space: nowrap; /* interdiction de passer à la ligne */
 }
