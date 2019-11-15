@@ -1,11 +1,9 @@
+<div class="nav-links">
+  <%= link_to '< Back', projects_path %>
+  <%= link_to 'Show >', @project %>
+</div>
+
 <div class="form-container">
-  <h1>Editing Project</h1>
-
-  <div class="nav-links">
-    <%= link_to 'Show >', @project %>
-    <%= link_to '< Back', projects_path %>
-  </div>
-  
+  <h1 id="form-title">Editing Project</h1>
   <%= render 'form', project: @project %>
-
 </div>
