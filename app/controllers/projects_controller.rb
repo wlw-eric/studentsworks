@@ -8,17 +8,37 @@ class ProjectsController < ApplicationController
     # @sql = "Projects.name ILIKE '#{'%'+params[:name]+'%'}' " if params[:name].present?
     @sql = params[:name].present? ? "Projects.name ILIKE '#{'%'+params[:name]+'%'}' " : "Projects.name ILIKE '%' "
     @sql += "OR Projects.description ILIKE '#{'%'+params[:name]+'%'}' " if params[:name].present?
-    @sql += "AND Projects.category ILIKE '#{'%'+params[:categorysdigital]+'%'}' " if params[:categorysdigital].present?
-    @sql += "AND Projects.category ILIKE '#{'%'+params[:categorysmarketing]+'%'}' " if params[:categorysmarketing].present?
-    @sql += "AND Projects.category ILIKE '#{'%'+params[:categorysdesign]+'%'}' " if params[:categorysdesign].present?
-    @sql += "AND Projects.progress = #{params[:progresspropose].to_i} " if params[:progresspropose].present?
-    @sql += "AND Projects.progress = #{params[:progressselected].to_i} " if params[:progressselected].present?
-    @sql += "AND Projects.progress = #{params[:progressclose].to_i} " if params[:progressclose].present?
+
+    @sql += "and Projects.category ILIKE '#{'%'+params[:categorysdigital]+'%'}' " if params[:categorysdigital].present?
+    if params[:categorysdigital].present?
+      @sql += "or Projects.category ILIKE '#{'%'+params[:categorysmarketing]+'%'}' " if params[:categorysmarketing].present?
+    else
+      @sql += "And Projects.category ILIKE '#{'%'+params[:categorysmarketing]+'%'}' " if params[:categorysmarketing].present?
+    end
+
+    if params[:categorysdigital].present? || params[:categorysmarketing].present?
+      @sql += "or Projects.category ILIKE '#{'%'+params[:categorysdesign]+'%'}' " if params[:categorysdesign].present?
+    else
+      @sql += "And Projects.category ILIKE '#{'%'+params[:categorysdesign]+'%'}' " if params[:categorysdesign].present?
+    end
+
+    @sql += "and Projects.progress = #{params[:progresspropose].to_i} " if params[:progresspropose].present?
+    if params[:progresspropose].present?
+    @sql += "or Projects.progress = #{params[:progressselected].to_i} " if params[:progressselected].present?
+    else
+    @sql += "and Projects.progress = #{params[:progressselected].to_i} " if params[:progressselected].present?
+    end
+
+    if params[:progressselected].present?
+    @sql += "or Projects.progress = #{params[:progressclose].to_i} " if params[:progressclose].present?
+    else
+    @sql += "and Projects.progress = #{params[:progressclose].to_i} " if params[:progressclose].present?
+    end
+
     # @sql += "ORDER progress"
     @projects = Project.where(@sql).order(:progress)
     @count = @projects.count
     @count_tt = Project.count
-
   end
 
   # GET /projects/1
