@@ -1,44 +1,33 @@
-  <div id="sticky-header">
-    <%= form_tag projects_path, method: :get, class: "simple_form search", id:"search-index" do %>
-      <div class="search-form-control form-group search_index">
-      <%= text_field_tag :name,
-        params[:name],
-        class: "form-control string required field",
-        placeholder: "Titre"
-      %>
-<div class= "d-flex flex-row mt-3">
-  <div class="input-group mb-3 mr-3">
-    <div class="input-group-prepend">
-      <div class="input-group-text">
-        <input class="ml-3" value="Digital" type="checkbox" name="categorysdigital" id="digital" aria-label="Checkbox for following text input">Digital
-        <input class="ml-3" value="Marketing" type="checkbox" name="categorysmarketing" id="marketing" aria-label="Checkbox for following text input">Marketing
-        <input class="ml-3" value="Design" type="checkbox" name="categorysdesign" id="design" aria-label="Checkbox for following text input">Design
+
+<div class="sticky-header text-center">
+    <div class="d-flex align-items-start">
+      <div id=" search-form-control form-group search_index">
+      <%= form_tag projects_path, method: :get, class: "simple_form search", id:"search-index" do %>
+
+        <%= text_field_tag :name,
+          params[:name],
+          class: "form-control string required field",
+          placeholder: "Taper votre recherche"
+        %>
       </div>
-    </div>
-  </div>
 
-  <div class="input-group mb-3">
-    <div class="input-group-prepend">
-      <div class="input-group-text">
-        <input class="ml-3" value="1" type="checkbox" name="progresspropose" id="propose" aria-label="Checkbox for following text input">Propose
-        <input class="ml-3" value="2" type="checkbox" name="progressselected" id="selected" aria-label="Checkbox for following text input">Selected
-        <input class="ml-3" value="3" type="checkbox" name="progressclose" id="close" aria-label="Checkbox for following text input">Close
-      </div>
-    </div>
-  </div>
-</div>
+          <div class="mb-1 mr-3 input-group-text">
+            <input class="ml-3" value="Digital" type="checkbox" name="categorysdigital" id="digital" aria-label="Checkbox for following text input">Digital
+            <input class="ml-3" value="Marketing" type="checkbox" name="categorysmarketing" id="marketing" aria-label="Checkbox for following text input">Marketing
+            <input class="ml-3" value="Design" type="checkbox" name="categorysdesign" id="design" aria-label="Checkbox for following text input">Design
+          </div>
 
+          <div class="input-group-text">
+            <input class="ml-3" value="1" type="checkbox" name="progresspropose" id="propose" aria-label="Checkbox for following text input">Propose
+            <input class="ml-3" value="2" type="checkbox" name="progressselected" id="selected" aria-label="Checkbox for following text input">Selected
+            <input class="ml-3" value="3" type="checkbox" name="progressclose" id="close" aria-label="Checkbox for following text input">Close
+          </div>
 
 
-      <%#= select_tag :category,
-       options_for_select(["", "Digital", "Marketing", "Design"],
-        params[:category]),
-        as: :radio_buttons,
-        class: "form-control string required field"
-         %>
-      <%= button_tag icon('fas', 'search', ' Search'), class: "btn btn-flat", id: "submit-search" %>
-      </div>
+      <%= button_tag icon('fas', 'search', ' Search'), class: "btn btn-flat btn-green ml-3", id: "submit-search" %>
     <% end %>
+    </div>
+  </div>
   </div>
 
 
