@@ -31,7 +31,7 @@ user.save
   users.save
 end
 
-10.times do
+25.times do
   project = Project.new(
       name: Faker::Company.bs,
       description:    (Faker::Lorem.paragraphs(number: 10)).join,
