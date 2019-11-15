@@ -1,17 +1,14 @@
-  <%= render 'formsearch', project: @project %>
-  
-      <div class="uk-card index-card-container">
-        <p class="list-counter">Nomber in list <%= @count %>/<%= @count_tt %></p>
-      <% @projects.each do |project| %>
+<%= render 'formsearch', project: @project %>
+<p class="list-counter">Number in list <%= @count %>/<%= @count_tt %></p>
 
-          <% if project.progress == 3 %>
-            <div class="uk-card uk-card-default done">
-          <% else %>
-            <div class="uk-card uk-card-default">
-          <% end %>
-
-            <%= link_to project_imageindex_for(project), project_path(project) %>
-
+<div class="uk-card index-card-container">
+  <% @projects.each do |project| %>
+    <% if project.progress == 3 %>
+      <div class="uk-card uk-card-default done">
+    <% else %>
+      <div class="uk-card uk-card-default">
+    <% end %>
+    <%= link_to project_imageindex_for(project), project_path(project) %>
             <div class="uk-card uk-card-body">
               <h3 class="uk-card uk-card-title"><%= link_to project.name, project_path(project) %></h3>
               <h6> Company : <%= project.creator.entreprise_name %></h6>
