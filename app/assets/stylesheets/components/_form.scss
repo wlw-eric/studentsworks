@@ -1,7 +1,8 @@
-#new-project {
+#form-title {
 	font-size: 48px;
 	font-family: 'Roboto';
 	margin-bottom: 24px;
+	font-weight: bold;
 }
 
 .form-container {
@@ -25,11 +26,11 @@
     margin-bottom: 8px;
 }
 
- .categories-button input {
+.categories-button input {
     display: none;
- }
+}
 
- .categories-button label {
+.categories-button label {
  	background-color: $soft-gray;
  	width: 160px;
  	padding: 12px 0;
@@ -38,15 +39,24 @@
  	border-radius: 2px;
  	text-align: center;
  	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
- }
+}
 
-  .form-check input:checked + label {
+.categories-button label:hover {
+ 	background-color: #5db7a1;
+}
+
+.form-check input:checked + label {
   	background-color: $blue;
   	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.2);
-  }
+}
 
-  .form-control {
+.form-control {
   	border-radius: 2px;
   	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
   	background-color: rgb(240, 240, 240);
-  }
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+}
