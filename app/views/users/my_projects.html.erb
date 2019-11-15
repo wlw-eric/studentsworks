@@ -1,7 +1,7 @@
 
 <!-- Projets sélectionnés en cours
  -->
-<button class="accordion">Mes projets selectionnés en cours (<%= @selected_projects.count %>)</button>
+<button class="accordion">Current projects (<%= @selected_projects.count %>)</button>
 <div class="panel">
 
 <br>
@@ -11,11 +11,11 @@
         <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
       <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
-      <p><strong>Objectif :</strong> <%= x.objective[0..70] %></p>
-      <p><strong>Descriptif :</strong> <%= x.description[0..100] %></p>
+      <p><strong>Goal :</strong> <%= x.objective[0..70] %></p>
+      <p><strong>Description :</strong> <%= x.description[0..100] %></p>
       <div class="cart-trip-info">
-        <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
-        <%= link_to ' Terminer et envoyer', update_progress_path(x.id), method: :update_progress, class: "fa fa-paper-plane btn-sm btn btn-outline-secondary btn-circle btn-lg" if x.progress < 3 && x.progress > 1 && x.work.speaker_id == current_user.id %>
+        <p class="text-muted"><strong>Category :</strong><%= x.category %></p>
+        <%= link_to 'Done', update_progress_path(x.id), method: :update_progress, class: "fa fa-paper-plane btn-sm btn btn-outline-secondary btn-circle btn-lg" if x.progress < 3 && x.progress > 1 && x.work.speaker_id == current_user.id %>
       </div>
     </div>
     </div>
@@ -27,17 +27,17 @@
 
 <!-- Projets terminés
  -->
-<button class="accordion">Mes projets selectionnés terminés (<%= @closed_projects.count %>) </button>
+<button class="accordion">Closed projects (<%= @closed_projects.count %>) </button>
 <div class="panel">
 <% @closed_projects.each do |x| %>
     <div class="card-product">
         <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
       <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
-      <p><strong>Objectif :</strong>  <%= x.objective[0..70] %></p>
-      <p><strong>Descriptif :</strong> <%= x.description[0..100] %></p>
+      <p><strong>Goal :</strong>  <%= x.objective[0..70] %></p>
+      <p><strong>Description :</strong> <%= x.description[0..100] %></p>
       <div class="cart-trip-info">
-        <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
+        <p class="text-muted"><strong>Category :</strong><%= x.category %></p>
         <p class="text-muted"><%= time_ago_in_words(x.updated_at) %></p>
       </div>
     </div>
@@ -48,7 +48,7 @@
 
 <!-- Mes projets proposés
  -->
-<button class="accordion">Mes projets proposés (<%= @propal_projects.count %>)</button>
+<button class="accordion">Projects in progress (<%= @propal_projects.count %>)</button>
 <div class="panel">
 <% @propal_projects.each do |x| %>
   <% if x.creator_id == current_user.id %>
@@ -56,14 +56,14 @@
         <a href=' <%= project_path(x) %>'><%= project_imageindex_for(x) %></a>
     <div class="card-product-infos">
       <h2><a href=' <%= project_path(x) %>'><%= x.name %></a></h2>
-      <p><strong>Objectif :</strong>  <%= x.objective[0..70] %></p>
-      <p><strong>Descriptif :</strong> <%= x.description[0..100] %></p>
+      <p><strong>Goal :</strong>  <%= x.objective[0..70] %></p>
+      <p><strong>Description :</strong> <%= x.description[0..100] %></p>
 
-          <p class="text-muted"><strong>Catégorie :</strong><%= x.category %></p>
+          <p class="text-muted"><strong>Category :</strong><%= x.category %></p>
           <% if x.work.present? %>
-            <p>projet reservé par : <%= x.work.speaker.email %></p>
+            <p>Booked by : <%= x.work.speaker.email %></p>
           <% else %>
-            <p>projet non reservé </p>
+            <p>Not booked</p>
             <div class="link">
               <%= link_to '', edit_project_path(x), class: " far fa-edit btn-sm btn btn-outline-secondary btn-circle btn-lg"%>
               <%= link_to '', x, method: :delete, data: { confirm: 'Are you sure?' }, class: "fa fa-trash btn-sm btn btn-outline-secondary btn-circle btn-lg" %>
