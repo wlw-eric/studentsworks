@@ -1,7 +1,5 @@
-
-<div class="sticky-header text-center">
-    <div class="d-flex align-items-start">
-      <div id=" search-form-control form-group search_index">
+<div class="search-bar sticky-header text-center">
+      <div id="search-form-control form-group search_index" class="flex-grow-1">
       <%= form_tag projects_path, method: :get, class: "simple_form search", id:"search-index" do %>
 
         <%= text_field_tag :name,
@@ -28,7 +26,3 @@
     <% end %>
     </div>
   </div>
-  </div>
-
-
-
